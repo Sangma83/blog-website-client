@@ -55,7 +55,10 @@ useEffect(() => {
 
     const navLinks = <>
        <li><NavLink to='/'>Home</NavLink></li>
-       <li><NavLink to='/allcraft'>All Art & Craft</NavLink></li>
+       <li><NavLink to='/addblog'>Add Blog</NavLink></li>
+       <li><NavLink to='/allblog'>All blogs</NavLink></li>
+       <li><NavLink to='/featureblog'>Featured Blogs</NavLink></li>
+       <li><NavLink to='/wishlist'>Wishlist</NavLink></li>
        {/* {
         user && <>
          <li><NavLink to='/addcraft'>Add Craft Item</NavLink></li>
@@ -68,7 +71,7 @@ useEffect(() => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 -mb-12">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,7 +87,7 @@ useEffect(() => {
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu menu-horizontal px-1 gap-1">
       {navLinks}
     </ul>
   </div>
