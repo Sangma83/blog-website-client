@@ -6,7 +6,8 @@ import logo4 from '../../assets/Untitled-3.png';
 
 const BelowBanner = () => {
     return (
-        <div className="">
+        <div className="mt-8">
+            <h2 className='text-3xl font-bold text-center'>FIND MORE BLOG</h2>
   <div className="flex gap-3">
   <div className="">
   <img className='h-[300px]' src={stroke} alt="" />
