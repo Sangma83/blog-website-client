@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div>
             <footer className="footer p-10 bg-slate-700 text-white">
-  <nav>
+  <nav className="ml-0 lg:ml-12">
     <h6 className="footer-title text-[#faf9f8]">Importent link</h6> 
     <a className="link link-hover ">Help Center</a>
     <a className="link link-hover">Market Place</a>
@@ -19,7 +19,7 @@ const Footer = () => {
     <a className="link link-hover">Contact Us</a>
     <a className="link link-hover">About Us</a>
   </nav> 
-  <nav>
+  <nav className="ml-0 lg:ml-12">
     <h6 className="footer-title text-[#fcfcfb]">Support</h6> 
     <a className="link link-hover">Home</a>
     <a className="link link-hover">Forums</a>
@@ -27,7 +27,7 @@ const Footer = () => {
     <a className="link link-hover">Terms & Conditions</a>
     <a className="link link-hover">Privacy Policy</a>
   </nav> 
-  <nav>
+  <nav className="ml-0 lg:ml-12">
     
     <h6 className="footer-title text-[#fcfbfb]">Follow Us</h6> 
     <div className="grid grid-flow-col gap-4">
