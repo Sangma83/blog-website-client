@@ -1,11 +1,13 @@
 import Banner from "../../shared/Banner/Banner";
+import BelowBanner from "../BelowBanner/BelowBanner";
 
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-           <h2>This is a home page</h2> 
+            <BelowBanner></BelowBanner>
+            
         </div>
     );
 };
