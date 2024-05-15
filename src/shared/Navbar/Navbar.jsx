@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import defaultPic from '../../assets/default.jpg';
 import { useContext, useState } from 'react';
-// import { AuthContext } from '../../../providers/AuthProvider';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 
@@ -38,7 +38,7 @@ useEffect(() => {
 
 
 
-    // const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [isRegistered, setIsRegistered] = useState(false);
    
    
@@ -47,24 +47,24 @@ useEffect(() => {
       setIsRegistered(true);
     };
 
-    // const handleSignOut = () =>{
-    //     logOut()
-    //     .then()
-    //     .catch()
-    //   }
+    const handleSignOut = () =>{
+        logOut()
+        .then()
+        .catch()
+      }
 
     const navLinks = <>
        <li><NavLink to='/'>Home</NavLink></li>
        <li><NavLink to='/addblog'>Add Blog</NavLink></li>
        <li><NavLink to='/allblog'>All blogs</NavLink></li>
        <li><NavLink to='/featureblog'>Featured Blogs</NavLink></li>
-       <li><NavLink to='/wishlist'>Wishlist</NavLink></li>
-       {/* {
+       
+       {
         user && <>
-         <li><NavLink to='/addcraft'>Add Craft Item</NavLink></li>
-         <li><NavLink to='/mylist'>My List</NavLink></li>
+         
+         <li><NavLink to='/wishlist'>Wishlist</NavLink></li>
         </>
-      } */}
+      }
      
       
     
@@ -94,7 +94,7 @@ useEffect(() => {
   
   <div className="navbar-end">
   
-  {/* {
+  {
   user ? (
 
     isRegistered ? (
@@ -116,7 +116,7 @@ useEffect(() => {
     </>
   )
   
-} */}
+}
 <Link to='/register'><button onClick={handleRegister} className="btn btn-ghost">Register</button></Link>
 
 <label className="swap swap-rotate">

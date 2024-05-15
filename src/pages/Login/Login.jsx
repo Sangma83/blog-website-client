@@ -1,4 +1,4 @@
-import loginPic from "../../assets/login.png";
+import loginPic from "../../assets/login.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -6,7 +6,7 @@ import { FaEye, FaGithub } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -20,12 +20,12 @@ const Login = () => {
     const navigate = useNavigate();
     console.log(location);
 
-    const handleLogin = e => {
-        e.preventDefault();
-        console.log(e.currentTarget);
-        const form = new FormData(e.currentTarget);
-        const email = form.get('email');
-        const password = form.get('password')
+    const handleLogin = event => {
+        event.preventDefault();
+        // console.log(event.currentTarget);
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
         console.log(email, password);
 
          //reset error
@@ -78,16 +78,16 @@ const Login = () => {
     return (
         
         <div>
-          {/* <Helmet>
-                <title>Maple Ridge || Login</title>
-            </Helmet> */}
+          <Helmet>
+                <title>TravelTime || Login</title>
+            </Helmet>
          
 
     <div className="hero min-h-screen my-16">
   <div className="hero-content flex-col lg:flex-row-reverse gap-4">
     <div className="text-center lg:text-left">
-      <h1 className="text-4xl font-bold ml-20">Login now!</h1>
-     <img className="w-2/3  mt-4 ml-28 lg:ml-0 " src={loginPic} alt="" />
+      <h1 className="text-4xl font-bold ml-20 lg:ml-64">Login now!</h1>
+     <img className="w-2/3  mt-4 ml-28 lg:ml-14 " src={loginPic} alt="" />
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 lg:ml-28">
       <form onSubmit={handleLogin} className="card-body">
@@ -129,7 +129,7 @@ const Login = () => {
         success && <p>{success}</p>
           }
         </div>
-        <p>Do not Have an account? <Link className="text-blue-400 font-bold" to='/register'>Register</Link></p>
+        <p className="text-center mt-4">Do not Have an account? <Link className="text-blue-400 font-bold" to='/register'>Register</Link></p>
         {
         success && <p>{success}</p>
         }
@@ -141,7 +141,7 @@ const Login = () => {
     </div>
   </div>
 </div>
-{/* <Footer></Footer> */}
+
         </div>
     );
 };
