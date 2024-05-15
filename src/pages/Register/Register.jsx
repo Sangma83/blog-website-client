@@ -34,27 +34,27 @@ const Register = () => {
 
         // Password validation
         if(password.length < 6){
-          setRegisterError("Password should be at least 6 characters or longer!");
+          setRegisterError();
           toast.error("Password should be at least 6 characters or longer!");
           return;
         }
         else if(!/[A-Z]/.test(password)){
-          setRegisterError("Password should contain at least one uppercase letter!");
+          setRegisterError();
           toast.error("Password should contain at least one uppercase letter!");
           return;
         }
         else if(!/[a-z]/.test(password)){
-          setRegisterError("Password should contain at least one lowercase letter!");
+          setRegisterError();
           toast.error("Password should contain at least one lowercase letter!");
           return;
         }
         else if(!/[0-9]/.test(password)){
-          setRegisterError("Password should contain at least one numeric character!");
+          setRegisterError();
           toast.error("Password should contain at least one numeric character!");
           return;
         }
         else if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
-          setRegisterError("Password should contain at least one special character!");
+          setRegisterError();
           toast.error("Password should contain at least one special character!");
           return;
         }
@@ -88,10 +88,10 @@ const Register = () => {
             <div className="hero min-h-screen my-16">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-4">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-4xl font-bold ml-20 lg:ml-72 mb-10">Register here!</h1>
-                        <img className="w-[600px] ml-28 lg:ml-28 mt-8" src={registerPic} alt="" />
+                        <h1 className="text-4xl font-bold ml-20 lg:ml-72 mb-10 text-cyan-700">Register here!</h1>
+                        <img className="w-[600px] ml-28 lg:ml-20 mt-8" src={registerPic} alt="" />
                     </div>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 lg:ml-28">
+                    <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100 lg:ml-28">
                         <form onSubmit={handleRegister} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -130,11 +130,16 @@ const Register = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                                 <br />
+                               <div className="mb-2 items-center">
+                               <input type="checkbox" name="terms" id="terms" />
+                              <label className="ml-2" htmlFor="terms">Accept our <a href="">Terms & Conditions</a>
+                               </label>
+                               </div>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register <ToastContainer /></button>
                             </div>
-                            <p className="text-center mt-4">Already Have an account? <Link className="text-blue-400 font-bold" to='/login'>Login</Link></p>
+                            <p className="text-center mt-4">Already Have an account? <Link className="text-purple-800 font-bold" to='/login'>Login</Link></p>
                         </form>
                         {
                             registerError && <p className="text-red-500 text-center">{registerError}</p>

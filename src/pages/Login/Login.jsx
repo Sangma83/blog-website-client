@@ -86,10 +86,10 @@ const Login = () => {
     <div className="hero min-h-screen my-16">
   <div className="hero-content flex-col lg:flex-row-reverse gap-4">
     <div className="text-center lg:text-left">
-      <h1 className="text-4xl font-bold ml-20 lg:ml-64">Login now!</h1>
+      <h1 className="text-4xl font-bold ml-20 lg:ml-64 text-cyan-700">Login now!</h1>
      <img className="w-2/3  mt-4 ml-28 lg:ml-14 " src={loginPic} alt="" />
     </div>
-    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 lg:ml-28">
+    <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100 lg:ml-28">
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -129,7 +129,7 @@ const Login = () => {
         success && <p>{success}</p>
           }
         </div>
-        <p className="text-center mt-4">Do not Have an account? <Link className="text-blue-400 font-bold" to='/register'>Register</Link></p>
+        <p className="text-center mt-4">Do not Have an account? <Link className="text-purple-800  font-bold" to='/register'>Register</Link></p>
         {
         success && <p>{success}</p>
         }
