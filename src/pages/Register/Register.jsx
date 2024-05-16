@@ -9,6 +9,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 
 
+
 const Register = () => {
    const { createUser } = useContext(AuthContext);
    const [registerError, setRegisterError] = useState('');

@@ -130,7 +130,7 @@ const Banner = () => {
                         <div style={gradientStyle}></div>
                         <div className="absolute top-96 ml-32" style={textStyle}>
                             <div className="flex gap-6 text-center mb-6 ml-72">
-                                <p className='flex items-center gap-1 text-xl'><MdOutlineDateRange />December 13, 2024 </p>
+                                <p className='flex items-center gap-1 lg:text-xl'><MdOutlineDateRange />December 13, 2024 </p>
                                 <p className='flex items-center gap-1 ml-14 text-xl'><LuPencilLine />by Xaviar Marlee</p>
                             </div>
                             <h2 className="text-white font-bold text-5xl">PRECIOUS MOMENTS WITH YOUR LITTLE ONE</h2>
@@ -145,3 +145,50 @@ const Banner = () => {
 };
 
 export default Banner;
+
+
+
+
+
+
+
+//  [
+//       {
+//         "title": "Exploring the Ancient Ruins of Machu Picchu",
+//         "image": "https://i.ibb.co/3FzQn7m/eddie-kiszka-r-FESpq5-MMTg-unsplash.jpg",
+//         "description": "Embark on a journey to the heart of the Andes Mountains and uncover the mysteries of the legendary Inca citadel.",
+//         "category": "Adventure"
+//       },
+//       {
+//         "title": "Safari Adventure: Witnessing the Great Migration in Serengeti",
+//         "image": "https://i.ibb.co/hFj96xg/hu-chen-0-Lwfb-Rt-Q-ac-unsplash.jpg",
+//         "description": "Experience the awe-inspiring spectacle of millions of wildebeests and zebras crossing the Serengeti plains.",
+//         "category": "Wildlife"
+//       },
+//       {
+//         "title": "Island Paradise: Discovering the Beauty of Bali",
+//         "image": "https://i.ibb.co/XCwx2qb/alfiano-sutianto-ex-Fd-OWk-YBQw-unsplash.jpg",
+//         "description": "Indulge in the tranquil beaches, lush rice terraces, and vibrant culture of Indonesia's most enchanting island.",
+//         "category": "Beach"
+//       },
+//       {
+//         "title": "Cityscape Chronicles: Exploring Tokyo's Neon Wonderland",
+//         "image": "https://i.ibb.co/x3T0L2v/jezael-melgoza-lay-Mb-SJ3-YOE-unsplash.jpg",
+//         "description": "Immerse yourself in the bustling streets, towering skyscrapers, and traditional temples of Japan's dynamic capital.",
+//         "category": "City"
+//       },
+//       {
+//         "title": "European Escapade: Uncovering the Charms of Paris",
+//         "image": "https://i.ibb.co/k20wfs4/pexels-imagestudio-1488315.jpg",
+//         "description": "Stroll along the romantic Seine River, admire iconic landmarks, and savor gourmet delights in the City of Light.",
+//         "category": "Culture"
+//       },
+//       {
+//         "title": "Magical Landscapes: Trekking the Inca Trail in Peru",
+//         "image": "https://i.ibb.co/WtH8BXX/kal-visuals-UL2zpf-Fkc-WU-unsplash.jpg",
+//         "description": "Embark on an unforgettable journey through rugged mountains, cloud forests, and ancient Inca settlements.",
+//         "category": "Hiking"
+//       }
+//     ]
+  
+  
