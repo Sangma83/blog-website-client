@@ -7,7 +7,7 @@ const RecentBlog = () => {
     const [recentBlog, setRecentBlog] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/recentBlog')
+        fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
         .then(res => res.json())
         .then(data => setRecentBlog(data))
     }, [])

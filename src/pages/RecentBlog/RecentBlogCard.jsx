@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 const RecentBlogCard = ({recent}) => {
-    const {title, image, description, category} = recent;
+    const {_id, title, image, description, category} = recent;
     return (
         
 <div className="card w-96 bg-base-100 shadow-xl">
@@ -12,7 +13,7 @@ const RecentBlogCard = ({recent}) => {
     </h2>
     <p>{description}</p>
     <div className="card-actions justify-end">
-      <button className="btn btn-neutral">Details</button>
+      <Link to={`/blogdetail/${_id}`}><button className="btn btn-neutral">Details</button></Link>
       <button className="btn btn-primary">Wishlist</button>
     </div>
   </div>

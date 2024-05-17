@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import BlogDetail from "../pages/BlogDetail/BlogDetail";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
         {
           path: '/register',
           element: <Register></Register>
+        },
+        {
+          path: '/blogdetail/:id',
+          element: <BlogDetail></BlogDetail>,
+          loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
         }
       ]
     },
