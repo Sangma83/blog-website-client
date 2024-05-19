@@ -18,7 +18,7 @@ const BlogDetail = () => {
 
     useEffect(() => {
         const fetchComments = async () => {
-            const response = await fetch(`http://localhost:5000/comments/${id}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/comments/${id}`);
             const data = await response.json();
             setComments(data);
             setLoading(false);
@@ -27,7 +27,7 @@ const BlogDetail = () => {
     }, [id]);
 
     const handleCommentSubmit = async () => {
-        if (commentText.trim()) {
+        if (commentText.trim() && currentUser) {
             const newComment = {
                 text: commentText,
                 userName: currentUser.displayName,
@@ -46,7 +46,7 @@ const BlogDetail = () => {
         }
     };
 
-    const isBlogOwner = recent.authorEmail === currentUser.email;
+    const isBlogOwner = currentUser && recent.authorEmail === currentUser.email;
 
     return (
         <div className="my-20">

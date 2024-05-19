@@ -5,6 +5,10 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import BlogDetail from "../pages/BlogDetail/BlogDetail";
+import AddBlog from "../pages/AddBlog/AddBlog";
+import WishList from "../pages/WishList/WishList";
+import PrivateRoute from "./PrivateRoute";
+import AllBlog from "../pages/AllBlog/AllBlog";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +30,21 @@ const router = createBrowserRouter([
         },
         {
           path: '/blogdetail/:id',
-          element: <BlogDetail></BlogDetail>,
+          element: <PrivateRoute><BlogDetail></BlogDetail></PrivateRoute>,
+          loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
+        },
+        {
+          path: '/addblog',
+          element: <AddBlog></AddBlog>
+        },
+        {
+          path: '/wishlist',
+          element: <WishList></WishList>
+          
+        },
+        {
+          path: '/allblog',
+          element: <AllBlog></AllBlog>,
           loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
         }
       ]

@@ -14,7 +14,7 @@ const RecentBlogCard = ({recent}) => {
     <p>{description}</p>
     <div className="card-actions justify-end">
       <Link to={`/blogdetail/${_id}`}><button className="btn btn-neutral">Details</button></Link>
-      <button className="btn btn-primary">Wishlist</button>
+      <Link to={`/wishlist/${_id}`}><button className="btn btn-primary">Wishlist</button></Link>
     </div>
   </div>
 </div>
