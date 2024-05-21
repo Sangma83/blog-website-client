@@ -15,8 +15,9 @@ const Home = () => {
             <RecentTopCaption></RecentTopCaption>
             <RecentBlog></RecentBlog>
             <ExtraSec></ExtraSec>
+            <ExtraSection></ExtraSection>
            <Newsletter></Newsletter> 
-           <ExtraSection></ExtraSection>
+           
         </div>
     );
 };

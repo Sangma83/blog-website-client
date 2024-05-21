@@ -9,6 +9,7 @@ import AddBlog from "../pages/AddBlog/AddBlog";
 import WishList from "../pages/WishList/WishList";
 import PrivateRoute from "./PrivateRoute";
 import AllBlog from "../pages/AllBlog/AllBlog";
+import FeaturedBlogs from "../pages/FeaturedBlogs/FeaturedBlogs";
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/wishlist',
-          element: <WishList></WishList>,
+          element: <PrivateRoute><WishList></WishList></PrivateRoute>,
           // loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
           
         },
@@ -47,6 +48,13 @@ const router = createBrowserRouter([
           path: '/allblog',
           element: <AllBlog></AllBlog>,
           loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
+        },
+        {
+          path: '/featureblog',
+          element: <FeaturedBlogs></FeaturedBlogs>,
+          loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
+          
+          
         }
       ]
     },
