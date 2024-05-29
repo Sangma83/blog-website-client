@@ -98,11 +98,11 @@ const AddBlog = () => {
                   <option value="" disabled selected>
                     Select a category
                   </option>
-                  <option value="Tech">Adventure</option>
-                  <option value="Health">Hiking</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Hiking">Hiking</option>
                   <option value="Travel">Travel</option>
-                  <option value="Food">Culture</option>
-                  <option value="Lifestyle">Wildlife</option>
+                  <option value="Culture">Culture</option>
+                  <option value="Wildlife">Wildlife</option>
                 </select>
               </label>
             </div>

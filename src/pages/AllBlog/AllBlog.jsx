@@ -36,7 +36,7 @@ const AllBlog = () => {
                 />
                 <button
                     className="bg-blue-500 text-white py-2 px-4 rounded-lg ml-2 mt-10"
-                    onClick={handleSearch}
+                    onClick={() =>handleSearch(blogs.title)}
                 >
                     Search
                 </button>

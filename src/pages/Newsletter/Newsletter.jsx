@@ -2,9 +2,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import brush from '../../assets/501.jpg';
 import book from '../../assets/h1-img-01.png';
 import { useState } from 'react';
+import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
 const Newsletter = () => {
    const [subscribe, setSubscribe] = useState(false);
+   const {text} = useTypewriter({
+    loop: {},
+    typeSpeed: 120,
+    delaySpeed: 80,
+   });
 
     
     const handleSubscribe = event => {
@@ -29,7 +35,7 @@ const Newsletter = () => {
             <div className='flex relative'>
                 <div className="w-1/3 absolute bottom-10 left-10"><img className='w-[450px]' src={book} alt="" /></div>
                 <div className="w-1/2 absolute bottom-32 right-20">
-                    <h2 className='font-bold text-black text-3xl'>FINDING THE PERFECT TRAILS TO HIKE IS EASY WITH <span className='text-lime-700'>NEWSLETTER</span></h2>
+                    <h2 className='font-bold text-black text-3xl'>FINDING THE PERFECT TRAILS TO HIKE IS EASY WITH <span className='text-lime-700'>{text}NEWSLETTER</span> <Cursor></Cursor> </h2>
 
                     <div className="join mt-8">
                      <input className="input input-bordered join-item" name='name' placeholder="Name"/>

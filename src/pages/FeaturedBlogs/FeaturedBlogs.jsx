@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import {
     useReactTable,
@@ -8,9 +8,11 @@ import {
     flexRender,
 } from '@tanstack/react-table';
 import '../FeaturedBlogs/FeaturedBlog.css'; // Import your custom styles
+import { AuthContext } from "../../providers/AuthProvider";
 
 const FeaturedBlogs = () => {
     const loadedBlogs = useLoaderData();
+    const { user } = useContext(AuthContext);
 
     const calculateWordCount = (text) => {
         return text ? text.split(/\s+/).length : 0;
@@ -41,20 +43,23 @@ const FeaturedBlogs = () => {
             {
                 accessorKey: 'author',
                 header: 'Blog Owner',
+                cell: (info) => (
+                    <span>{info.getValue() || (user && user.displayName)}</span>
+                ),
             },
             {
                 accessorKey: 'profilePicture',
                 header: 'Blog Owner Profile Picture',
-                cell: info => (
+                cell: (info) => (
                     <img
-                        src={info.getValue()}
+                        src={info.getValue() || (user && user.photoURL)}
                         alt="Profile"
                         className="table-img"
                     />
                 ),
             },
         ],
-        []
+        [user]
     );
 
     const table = useReactTable({

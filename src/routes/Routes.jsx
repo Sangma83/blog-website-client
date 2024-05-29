@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/featureblog',
-          element: <FeaturedBlogs></FeaturedBlogs>,
+          element: <PrivateRoute><FeaturedBlogs></FeaturedBlogs></PrivateRoute>,
           loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
           
           

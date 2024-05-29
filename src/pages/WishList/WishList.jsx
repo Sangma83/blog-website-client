@@ -1,112 +1,84 @@
-import { useEffect, useState } from "react";
-import useAuth from "../../providers/useAuth";
-import Swal from "sweetalert2";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const WishList = () => {
-  const recents = useLoaderData();
-  const { id } = useParams();
-  const recent = recents.find(recent => recent._id === id);
-  // const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+    const [wishlistItems, setWishlistItems] = useState([]);
+    // const { _id } = recent;
 
-  const { user } = useAuth() || {};
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    if (user) {
-      fetch(`${import.meta.env.VITE_API_URL}/recentBlog/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setList(data);
-        });
-    }
-  }, [user, recents]);
-
-  const handleDelete = (_id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_API_URL}/recentBlog/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your art & craft item has been deleted.",
-                icon: "success",
-              });
-              const remaining = list.filter((li) => li._id !== _id);
-              setList(remaining);
+    useEffect(() => {
+        const fetchWishlist = async () => {
+            if (user) {
+                try {
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/wishlist/${user.uid}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setWishlistItems(data);
+                    } else {
+                        console.error('Failed to fetch wishlist items');
+                    }
+                } catch (error) {
+                    console.error('Error fetching wishlist items:', error);
+                }
             }
-          });
-      }
-    });
-  };
+        };
+        fetchWishlist();
+    }, [user]);
 
-  const handleSort = (e) => {
-    const filterValue = e.target.value;
-    let sortedList = [];
-
-    if (filterValue === "Yes") {
-      sortedList = list.filter((item) => item.custom === "Yes");
-    } else if (filterValue === "No") {
-      sortedList = list.filter((item) => item.custom === "No");
-    } else {
-      sortedList = [...list];
+    if (!user) {
+        return <p>Please log in to view your wishlist.</p>;
     }
 
-    setList(sortedList);
-  };
 
-  return (
-    <div>
-      <select
-        onChange={handleSort}
-        className="select select-bordered w-48 my-10"
-      >
-        <option value="">Sort by Customization</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
 
-      <div className="grid md:grid-cols-3 gap-12 ml-16 lg:ml-0">
-        {list?.map((p) => (
-          <div key={p._id} className="card w-96 glass">
+    const handleDelete = async (id) => {
+        const proceed = confirm('Are you sure you want to delete?');
+        if (proceed) {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/wishlist/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    setWishlistItems(wishlistItems.filter(item => item._id !== id));
+                } else {
+                    console.error('Failed to delete wishlist item');
+                }
+            } catch (error) {
+                console.error('Error deleting wishlist item:', error);
+            }
+        }
+    };
+
+    return (
+        <div>
+            <h2 className="my-6 text-center font-bold text-2xl text-lime-800">Your Wishlist</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
+                {wishlistItems.map(item => (
+                    <li key={item._id}>
+
+            <div className="card w-96 bg-base-100 shadow-xl">
             <figure>
-              <img src={p.photo} alt="car!" />
+                <img className="relative" src={item.image} alt="image" />
+                <div className="bg-fuchsia-700 px-16 py-1 text-white absolute top-56 skeleton">
+                    {item.category}
+                </div>
             </figure>
             <div className="card-body">
-              <h2 className="card-title">Subcategory: {p.name}</h2>
-              <p>{p.price}</p>
-              <p>{p.rating}</p>
-              <p>{p.custom}</p>
-              <p>{p.stock}</p>
-              <div className="card-actions justify-center">
-                <button
-                  onClick={() => handleDelete(p._id)}
-                  className="btn btn-warning"
-                >
-                  Delete
-                </button>
-                <Link to={`/updatecraft/${p._id}`}>
-                  <button className="btn btn-success">Update</button>
-                </Link>
-              </div>
+                <h2 className="card-title">{item.title}</h2>
+                <p>{item.description}</p>
+                <div className="card-actions justify-end">
+                <Link to={`/blogdetail/${item.blogId}`}><button className="btn btn-neutral">Details</button></Link>
+                    <button onClick={() => handleDelete(item._id)} className="btn bg-red-700 text-white">Remove</button>
+                </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+        </div>
+                       
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 };
 
 export default WishList;

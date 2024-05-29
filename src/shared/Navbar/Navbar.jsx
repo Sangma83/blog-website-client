@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 const Navbar = () => {
 
-// use theme from local storage if available or set light theme
+
 const [theme, setTheme] = useState(
   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
 );
@@ -25,11 +25,10 @@ const handleToggle = (e) => {
   }
 };
 
-// set theme state in localstorage on mount & also update localstorage on state change
+
 useEffect(() => {
   localStorage.setItem("theme", theme);
   const localTheme = localStorage.getItem("theme");
-  // add custom data-theme attribute to html tag required to update theme using DaisyUI
   document.querySelector("html").setAttribute("data-theme", localTheme);
 }, [theme]);
 
@@ -57,11 +56,11 @@ useEffect(() => {
        <li><NavLink to='/'>Home</NavLink></li>
        <li><NavLink to='/addblog'>Add Blog</NavLink></li>
        <li><NavLink to='/allblog'>All blogs</NavLink></li>
-       <li><NavLink to='/featureblog'>Featured Blogs</NavLink></li>
+       
        
        {
         user && <>
-         
+         <li><NavLink to='/featureblog'>Featured Blogs</NavLink></li>
          <li><NavLink to='/wishlist'>Wishlist</NavLink></li>
         </>
       }
