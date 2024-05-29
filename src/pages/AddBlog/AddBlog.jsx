@@ -1,6 +1,7 @@
 import { MdLibraryAdd } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAuth from "../../providers/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const AddBlog = () => {
   const { user } = useAuth() || {};
@@ -48,6 +49,9 @@ const AddBlog = () => {
 
   return (
     <div className="space-y-10 my-10">
+       <Helmet>
+                <title>TravelTime || Add Blog</title>
+            </Helmet>
       <div className="bg-[#afefa9] p-24 rounded-lg">
         <h2 className="text-3xl font-extrabold text-center mb-4 relative">
           <MdLibraryAdd className="text-[#0856e6d3] ml-80 absolute left-20" />

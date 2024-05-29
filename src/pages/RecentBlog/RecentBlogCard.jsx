@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from "framer-motion";
 
 const RecentBlogCard = ({ recent }) => {
     const { _id, title, image, description, category } = recent;
@@ -44,7 +45,11 @@ const RecentBlogCard = ({ recent }) => {
     };
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <motion.div
+            className="card w-96 bg-base-100 shadow-xl"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+        >
             <figure>
                 <img className="relative" src={image} alt="image" />
                 <div className="bg-fuchsia-700 px-16 py-1 text-white absolute top-56 skeleton">
@@ -58,13 +63,18 @@ const RecentBlogCard = ({ recent }) => {
                     <Link to={`/blogdetail/${_id}`}>
                         <button className="btn btn-neutral">Details</button>
                     </Link>
-                    <button className="btn btn-primary" onClick={addToWishlist}>
+                    <motion.button
+                        className="btn btn-primary"
+                        onClick={addToWishlist}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                    >
                         Wishlist
-                    </button>
+                    </motion.button>
                 </div>
             </div>
             <ToastContainer></ToastContainer>
-        </div>
+        </motion.div>
     );
 };
 

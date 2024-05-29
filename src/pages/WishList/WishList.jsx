@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const WishList = () => {
     const { user } = useContext(AuthContext);
     const [wishlistItems, setWishlistItems] = useState([]);
-    // const { _id } = recent;
 
     useEffect(() => {
         const fetchWishlist = async () => {
@@ -52,6 +52,9 @@ const WishList = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>TravelTime || Wishlist</title>
+            </Helmet>
             <h2 className="my-6 text-center font-bold text-2xl text-lime-800">Your Wishlist</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
                 {wishlistItems.map(item => (

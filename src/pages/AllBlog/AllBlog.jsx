@@ -14,6 +14,7 @@ const AllBlog = () => {
             blog.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredBlogs(filtered);
+        
     }, [blogs, searchTerm]);
 
     const handleSearch = () => {
@@ -33,13 +34,15 @@ const AllBlog = () => {
                     placeholder="Search by title..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+
                 />
                 <button
-                    className="bg-blue-500 text-white py-2 px-4 rounded-lg ml-2 mt-10"
-                    onClick={() =>handleSearch(blogs.title)}
-                >
-                    Search
-                </button>
+    className="bg-blue-500 text-white py-2 px-4 rounded-lg ml-2 mt-10"
+    onClick={handleSearch}
+>
+    Search
+</button>
+
             </div>
             {/* Pass filtered blogs as props to TabCategory component */}
             <TabCategory displayAll={true} recent={filteredBlogs} />

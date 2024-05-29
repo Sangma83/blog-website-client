@@ -7,8 +7,9 @@ import {
     getPaginationRowModel,
     flexRender,
 } from '@tanstack/react-table';
-import '../FeaturedBlogs/FeaturedBlog.css'; // Import your custom styles
+import '../FeaturedBlogs/FeaturedBlog.css'; 
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const FeaturedBlogs = () => {
     const loadedBlogs = useLoaderData();
@@ -72,7 +73,10 @@ const FeaturedBlogs = () => {
 
     return (
         <div className="my-10">
-            <h3>Top 10 Blogs by Word Count</h3>
+             <Helmet>
+                <title>TravelTime || Featured Blogs</title>
+            </Helmet>
+            
             <table className="table">
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (

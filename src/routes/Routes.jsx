@@ -40,8 +40,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/wishlist',
-          element: <PrivateRoute><WishList></WishList></PrivateRoute>,
-          // loader: () => fetch(`${import.meta.env.VITE_API_URL}/recentBlog`)
+          element: <PrivateRoute><WishList></WishList></PrivateRoute>
           
         },
         {

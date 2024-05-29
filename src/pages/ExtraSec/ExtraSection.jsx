@@ -13,12 +13,12 @@ const ExtraSection = () => {
 
   return (
     <motion.div
-      className="extra-section my-10"
+      className="extra-section my-24"
       initial={{ opacity: 0, y: '100px' }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className='text-4xl text-center font-bold mb-4'>EXPLORE MORE</h2>
+      <h2 className='text-4xl text-center font-bold mb-10'>EXPLORE MORE</h2>
       <div className="image-grid grid grid-cols-4 gap-4">
         <ImageContainer src={img} title="Desert" />
         <ImageContainer src={img2} title="Friends" />
